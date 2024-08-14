@@ -1,11 +1,10 @@
 import torch
 import time
-import argparse
-
 from ipex_llm.transformers import AutoModelForCausalLM
-from transformers import AutoTokenizer
-import time
+from transformers import AutoTokenizer, TextIteratorStreamer
 from time import perf_counter
+from threading import Thread
+import gradio as gr
 
 model_id = "NousResearch/Meta-Llama-3-8B-Instruct"
 tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -19,13 +18,6 @@ tokenizer = AutoTokenizer.from_pretrained(model_id)
 terminators = [
     tokenizer.eos_token_id,
     tokenizer.convert_tokens_to_ids("<|eot_id|>")]
-
-from threading import Thread
-from transformers import TextIteratorStreamer
-from fastapi import FastAPI
-import uvicorn
-import gradio as gr
-app = FastAPI()
 
 def chatbot(model_precision,Question):
     streamer = TextIteratorStreamer(tokenizer, timeout=10.0, skip_prompt=True, skip_special_tokens = True)
@@ -74,7 +66,7 @@ demo = gr.Interface(
     max_batch_size=1,
     delete_cache=(5, 5),
     fn=chatbot,
-    inputs=[gr.Dropdown(["FP32", "INT4"],value = "INT4", label="Select Precision"),
+    inputs=[gr.Dropdown(["FP32", "INT4"],value = "INT4", label="Select Precision -if none selected, Default will be INT4"),
             gr.Textbox(label="Ask Me Anything",lines=5)],
     outputs=[gr.Textbox(label="Answers"), 
              gr.Textbox(label="Tokens/sec")], 
