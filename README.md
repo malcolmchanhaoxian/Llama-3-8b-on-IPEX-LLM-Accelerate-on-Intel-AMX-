@@ -5,9 +5,9 @@ The python codebase can be deployed in any Azure General Purpose Compute Family 
 
 ## Installation
 
-Install all the necessary packages via requirements.txt file
+Install all the necessary packages via requirements.py file
 ```sh
-pip install -r requirements.txt
+python requirements.py
 ```
 ### (1) Execute via Jupyter
 Ensure you have jupyter installed on your host
