@@ -4,11 +4,18 @@ This is a project to test Intel optimised LLM codebase on Azure General Purpose 
 The python codebase can be deployed in any Azure General Purpose Compute Family of Dv6 or Ev6
 
 ## Installation
-
-Install all the necessary packages via requirements.py file
 ```sh
-python requirements.py
+#Install ipex-llm with 'all' option
+pip install --pre --upgrade ipex-llm[all] --extra-index-url https://download.pytorch.org/whl/cpu
+
+#Install Transformers for Llama3 with IPEX-LLM optimizations
+pip install transformers==4.37.0 
+
+#Install Gradio for UI Design
+pip install gradio
 ```
+
+## Run Code
 ### (1) Execute via Jupyter
 Ensure you have jupyter installed on your host
 Codebase is stored in ipex_llm_chatbot.ipynb
