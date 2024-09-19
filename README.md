@@ -51,6 +51,10 @@ The below is a benchmark exercise to compare the performance of optimised vs. no
 <img src="https://github.com/user-attachments/assets/18d30158-3018-43c7-aed8-0b4bd4726a72" width="750">
 
 - Between optimised (INT4 + AMX) vs. non-optimised (FP32), we observed up to an average of 2.7x better performance on the optimised model.
-- Between Dv6 vs. Dav5 (both utilising quantised model - INT4), we observed up to an average of 1.8x better performance on Intel Dv6 vs Dav5. 
+- Between Dv6 vs. Dav5 (both utilising quantised model - INT4), we observed up to an average of 1.8x better performance on Intel Dv6 vs Dav5.
+
+## Disclaimers / Attribution
+This repository is for educational purposes and is a community contribution from repository owner. It is not intended for any commercial purposes.
+Credits and attribution should be directed to repository owner and all contributors.
  
 
